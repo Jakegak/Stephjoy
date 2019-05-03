@@ -1,0 +1,11 @@
+{% extends '_nav.html' %}
+{% block content %}
+    <form method="POST" action="{% url 'signup' %}" >
+        {% csrf_token %}
+        {% if form.errors %}
+          <p>You have an error</p>
+        {% endif %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-primary" value="signup" />
+    </form>
+{% endblock %}
