@@ -1,7 +1,16 @@
 {% extends '_nav.html' %}
 {% block content %}
     {% if user.is_authenticated %}
-        <p>{{ user.username }}</p>
-        <p>{{ user.email }}</p>
+        {% for student in Students.all %}
+
+            <div class="media text-muted pt-5 pl-5">
+              <img src="{{ student.photo.url }}" class="bd-placeholder-img mr-2 rounded" width="100" height="70" />
+              <p class="media-body pb-3 mb-0 large lh-125 border-bottom border-gray">
+                <strong class="d-block text-gray-dark"><a href="/students/{{ student.id }}"> {{ student.admin_number }}</a></strong>
+                &nbsp; {{ student.first_name }} &nbsp;{{ student.phone_number }} &nbsp; {{ student.classes }}
+              </p>
+            </div>
+            <br />
+        {% endfor %}
     {% endif %}
 {% endblock %}

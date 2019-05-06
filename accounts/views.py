@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib import auth
 from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
+from .form import signupForm
 
 def login_user(request):
     print('1')
@@ -34,7 +35,7 @@ def signup(request):
             messages.success(request, ("You've been registered..."))
             return redirect('home')
     else:
-        form=UserCreationForm
+        form=UserCreationForm()
 
     context = {'form': form}
     return render(request, 'accounts/signup.html', context)
